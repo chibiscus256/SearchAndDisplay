@@ -1,6 +1,5 @@
 package ru.slavicsky.electroluxapp.adapters;
 
-import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -38,7 +37,9 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
         GithubRepo repo = repos.get(position);
         holder.stars.setText("1");
-        holder.user.setText("coco");
+        holder.user.setText("coder coder");
+        holder.repoName.setText("code is here");
+        holder.lastUpdate.setText("1 year");
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {

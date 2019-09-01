@@ -2,16 +2,21 @@ package ru.slavicsky.electroluxapp.data;
 
 import android.os.Parcel;
 
-public class GithubRepo {
+import com.squareup.moshi.Json;
 
+public class GithubRepo {
+    @Json(name = "name")
     private String repoName;
-    private String lastUpdate;
+    @Json(name = "size")
+    private int size;
+    @Json(name = "login")
     private String user;
+    @Json(name = "stargazers_count")
     private int stars;
 
     protected GithubRepo(Parcel in) {
         repoName = in.readString();
-        lastUpdate = in.readString();
+        size = in.readInt();
         user = in.readString();
         stars = in.readInt();
     }
@@ -24,12 +29,12 @@ public class GithubRepo {
         this.repoName = nickname;
     }
 
-    public String getLastUpdate() {
-        return lastUpdate;
+    public int getSize() {
+        return size;
     }
 
-    public void setLastUpdate(String lastUpdate) {
-        this.lastUpdate = lastUpdate;
+    public void setSize(int size) {
+        this.size = size;
     }
 
     public String getUser() {
