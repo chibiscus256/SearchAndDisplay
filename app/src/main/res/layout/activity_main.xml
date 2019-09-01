@@ -10,8 +10,8 @@
     android:background="@drawable/dandelions1"
     >
 
-
         <EditText
+            android:id="@+id/search_view"
             android:layout_width="144dp"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -26,6 +26,7 @@
             />
 
         <TextView
+            android:id="@+id/greetings_view"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
@@ -38,5 +39,23 @@
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintVertical_bias="0.3"
             />
+
+        <Button
+            android:id="@+id/results_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="10dp"
+            android:paddingRight="10dp"
+            android:background="@drawable/round_corner"
+            android:text="@string/button_text"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,4 +2,5 @@
     <string name="app_name">ElectroluxApp</string>
     <string name="greetings">Thanks for using this searching app!</string>
     <string name="search">Search…</string>
+    <string name="button_text">GET RESULTS</string>
 </resources>
