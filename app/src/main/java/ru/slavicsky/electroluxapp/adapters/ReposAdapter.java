@@ -7,6 +7,7 @@ import android.widget.TextView;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import ru.slavicsky.electroluxapp.R;
@@ -14,7 +15,7 @@ import ru.slavicsky.electroluxapp.data.GithubRepo;
 
 public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
 
-    private List<GithubRepo> repos;
+    public List<GithubRepo> repos;
 
     public ReposAdapter(List<GithubRepo> repos) {
         this.repos = repos;
@@ -36,24 +37,30 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         GithubRepo repo = repos.get(position);
-        holder.stars.setText("1");
-        holder.user.setText("coder coder");
-        holder.repoName.setText("code is here");
-        holder.lastUpdate.setText("1 year");
+        System.out.println(""+repo.stars);
+        holder.stars.setText(""+repo.stars);
+        holder.user.setText(repo.login);
+        holder.repoName.setText(repo.repoName);
+        holder.size.setText(""+repo.size);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
         TextView user;
         TextView repoName;
         TextView stars;
-        TextView lastUpdate;
+        TextView size;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            lastUpdate = itemView.findViewById(R.id.last_update);
-            user = itemView.findViewById(R.id.user);
+            size = itemView.findViewById(R.id.size);
+            user = itemView.findViewById(R.id.login);
             stars = itemView.findViewById(R.id.stars);
             repoName = itemView.findViewById(R.id.repo_name);
         }
+    }
+    public void setRepos(List<GithubRepo> repoList) {
+        this.repos = new ArrayList<>();
+        this.repos.addAll(repoList);
+        notifyDataSetChanged();
     }
 }

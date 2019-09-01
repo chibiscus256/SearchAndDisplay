@@ -1,25 +1,38 @@
 package ru.slavicsky.electroluxapp.data;
 
 import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.squareup.moshi.Json;
 
-public class GithubRepo {
+public class GithubRepo implements Parcelable {
     @Json(name = "name")
-    private String repoName;
+    public String repoName;
     @Json(name = "size")
-    private int size;
+    public int size;
     @Json(name = "login")
-    private String user;
+    public String login;
     @Json(name = "stargazers_count")
-    private int stars;
+    public int stars;
 
     protected GithubRepo(Parcel in) {
         repoName = in.readString();
         size = in.readInt();
-        user = in.readString();
+        login = in.readString();
         stars = in.readInt();
     }
+
+    public static final Creator<GithubRepo> CREATOR = new Creator<GithubRepo>() {
+        @Override
+        public GithubRepo createFromParcel(Parcel in) {
+            return new GithubRepo(in);
+        }
+
+        @Override
+        public GithubRepo[] newArray(int size) {
+            return new GithubRepo[size];
+        }
+    };
 
     public String getNickname() {
         return repoName;
@@ -37,12 +50,12 @@ public class GithubRepo {
         this.size = size;
     }
 
-    public String getUser() {
-        return user;
+    public String getLogin() {
+        return login;
     }
 
-    public void setUser(String user) {
-        this.user = user;
+    public void setLogin(String login) {
+        this.login = login;
     }
 
     public int getStars() {
@@ -52,4 +65,29 @@ public class GithubRepo {
     public void setStars(int stars) {
         this.stars = stars;
     }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(repoName);
+        parcel.writeInt(size);
+        parcel.writeString(login);
+        parcel.writeInt(stars);
+    }
+
+    public static class GithubResult{
+        private GithubRepo[] results;
+
+        public GithubResult(GithubRepo[] results) {
+            this.results = results;
+        }
+        public GithubRepo[] getResults() {
+            return results;
+        }
+    }
 }
+

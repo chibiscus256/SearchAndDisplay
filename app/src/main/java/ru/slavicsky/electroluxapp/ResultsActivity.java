@@ -7,8 +7,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.squareup.moshi.Json;
+
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
+import java.util.Objects;
 
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
@@ -19,22 +23,23 @@ import retrofit2.Retrofit;
 import retrofit2.converter.moshi.MoshiConverterFactory;
 import ru.slavicsky.electroluxapp.adapters.ReposAdapter;
 import ru.slavicsky.electroluxapp.data.GithubRepo;
+import ru.slavicsky.electroluxapp.data.JSONResponse;
 import ru.slavicsky.electroluxapp.services.GithubClient;
 
 public class ResultsActivity extends AppCompatActivity {
 
     RecyclerView recyclerView;
-    List<GithubRepo> repos;
+    public ArrayList<GithubRepo> repos;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
-        repos = new ArrayList<>();
         Bundle arguments = getIntent().getExtras();
-        String query = arguments.get("query").toString()
-;
+        assert arguments != null;
+        String query = Objects.requireNonNull(arguments.get("query")).toString();
         recyclerView = findViewById(R.id.recycler_view_repos);
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -52,22 +57,30 @@ public class ResultsActivity extends AppCompatActivity {
         Retrofit retrofit = builder.build();
 
         GithubClient client = retrofit.create(GithubClient.class);
-        Call<List<GithubRepo>> call = client.getRepos(query);
+        Call<JSONResponse> call = client.getRepos(query);
+        System.out.println(call.toString());
 
-        call.enqueue(new Callback<List<GithubRepo>>() {
+
+
+        call.enqueue(new Callback<JSONResponse>() {
             @Override
-            public void onResponse(Call<List<GithubRepo>> call, Response<List<GithubRepo>> response) {
-                List<GithubRepo> repos = response.body();
-                System.out.println("===================================================================" +
-                        "===================================================================" +
-                        "===================================================================" +
-                        "==================================================================="+ repos.get(1).getUser());
+            public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
+                JSONResponse items = response.body();
+                System.out.println(items);
+                System.out.println(Arrays.toString(items.getResults()));
+                repos = new ArrayList<>((Arrays.asList(items.getResults())));
+                adapter.setRepos(repos);
+                System.out.println(repos);
             }
 
             @Override
-            public void onFailure(Call<List<GithubRepo>> call, Throwable t) {
+            public void onFailure(Call<JSONResponse> call, Throwable t) {
                 Toast.makeText(ResultsActivity.this, "error :(", Toast.LENGTH_SHORT).show();
+                System.out.println("=============================================");
+                t.printStackTrace();
             }
         });
+
     }
+
 }
