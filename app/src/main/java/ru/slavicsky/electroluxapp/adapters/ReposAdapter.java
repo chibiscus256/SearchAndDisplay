@@ -13,7 +13,7 @@ import java.util.List;
 import ru.slavicsky.electroluxapp.R;
 import ru.slavicsky.electroluxapp.data.GithubRepo;
 
-public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
+public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> {
 
     public List<GithubRepo> repos;
 
@@ -38,10 +38,10 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
     public void onBindViewHolder(ViewHolder holder, int position) {
         GithubRepo repo = repos.get(position);
         System.out.println(repos.size());
-        holder.stars.setText("stars: "+repo.stars);
+        holder.stars.setText("stars: " + repo.stars);
         holder.url.setText(repo.url);
         holder.repoName.setText(repo.repoName);
-        holder.size.setText("size: "+repo.size);
+        holder.size.setText("size: " + repo.size);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
@@ -58,6 +58,7 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
             repoName = itemView.findViewById(R.id.repo_name);
         }
     }
+
     public void setRepos(List<GithubRepo> repoList) {
         this.repos = new ArrayList<>();
         this.repos.addAll(repoList);

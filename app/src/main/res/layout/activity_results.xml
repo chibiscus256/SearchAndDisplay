@@ -10,8 +10,8 @@
         android:id="@+id/recycler_view_repos"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/flowers_field"
-        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentTop="true"
+        android:background="@drawable/flowers_field" />
 </RelativeLayout>

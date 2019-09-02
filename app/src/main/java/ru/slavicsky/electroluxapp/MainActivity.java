@@ -28,9 +28,9 @@ public class MainActivity extends AppCompatActivity {
             //preventing empty input
             @Override
             public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-                if(charSequence.length()==0){
+                if (charSequence.length() == 0) {
                     resultsButton.setVisibility(View.INVISIBLE);
-                }else{
+                } else {
                     resultsButton.setVisibility(View.VISIBLE);
                 }
             }

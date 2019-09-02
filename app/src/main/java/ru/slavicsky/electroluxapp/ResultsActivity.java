@@ -32,10 +32,11 @@ public class ResultsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_results);
 
+        //passing the text input
         Bundle arguments = getIntent().getExtras();
         String query = arguments.get("query").toString();
-        recyclerView = findViewById(R.id.recycler_view_repos);
 
+        recyclerView = findViewById(R.id.recycler_view_repos);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
@@ -71,7 +72,6 @@ public class ResultsActivity extends AppCompatActivity {
                 t.printStackTrace();
             }
         });
-
     }
 
 }
