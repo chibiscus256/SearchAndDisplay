@@ -1,7 +1,5 @@
 package ru.slavicsky.electroluxapp.data;
 
-import java.util.List;
-
 public class JSONResponse {
     public GithubRepo[] items;
 

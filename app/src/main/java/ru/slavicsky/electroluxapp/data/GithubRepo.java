@@ -1,8 +1,5 @@
 package ru.slavicsky.electroluxapp.data;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
 import com.squareup.moshi.Json;
 
 public class GithubRepo {
@@ -11,10 +8,8 @@ public class GithubRepo {
     @Json(name = "size")
     public int size;
     @Json(name = "html_url")
-    public String owner;
+    public String url;
     @Json(name = "stargazers_count")
     public int stars;
-
-
 }
 

@@ -23,7 +23,7 @@ card_view:cardCornerRadius="5dp">
         android:layout_height="wrap_content"
         android:textStyle="bold" />
     <TextView
-        android:id="@+id/owner"
+        android:id="@+id/url"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="owner"/>

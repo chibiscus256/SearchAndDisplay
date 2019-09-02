@@ -39,13 +39,13 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
         GithubRepo repo = repos.get(position);
         System.out.println(repos.size());
         holder.stars.setText("stars: "+repo.stars);
-        holder.user.setText(""+repo.owner);
+        holder.url.setText(repo.url);
         holder.repoName.setText(repo.repoName);
         holder.size.setText("size: "+repo.size);
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView user;
+        TextView url;
         TextView repoName;
         TextView stars;
         TextView size;
@@ -53,7 +53,7 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder>{
         public ViewHolder(View itemView) {
             super(itemView);
             size = itemView.findViewById(R.id.size);
-            user = itemView.findViewById(R.id.owner);
+            url = itemView.findViewById(R.id.url);
             stars = itemView.findViewById(R.id.stars);
             repoName = itemView.findViewById(R.id.repo_name);
         }

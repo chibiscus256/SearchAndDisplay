@@ -36,7 +36,6 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
 
         Bundle arguments = getIntent().getExtras();
-        assert arguments != null;
         String query = Objects.requireNonNull(arguments.get("query")).toString();
         recyclerView = findViewById(R.id.recycler_view_repos);
 
@@ -58,19 +57,13 @@ public class ResultsActivity extends AppCompatActivity {
 
         GithubClient client = retrofit.create(GithubClient.class);
         Call<JSONResponse> call = client.getRepos(query);
-        System.out.println(call.toString());
-
-
 
         call.enqueue(new Callback<JSONResponse>() {
             @Override
             public void onResponse(Call<JSONResponse> call, Response<JSONResponse> response) {
                 JSONResponse items = response.body();
-                System.out.println(items);
-                System.out.println(Arrays.toString(items.getResults()));
                 repos = new ArrayList<>((Arrays.asList(items.getResults())));
                 adapter.setRepos(repos);
-                System.out.println(repos);
             }
 
             @Override
