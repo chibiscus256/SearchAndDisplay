@@ -7,11 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.squareup.moshi.Json;
-
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 import java.util.Objects;
 
 import okhttp3.OkHttpClient;
@@ -36,7 +33,7 @@ public class ResultsActivity extends AppCompatActivity {
         setContentView(R.layout.activity_results);
 
         Bundle arguments = getIntent().getExtras();
-        String query = Objects.requireNonNull(arguments.get("query")).toString();
+        String query = arguments.get("query").toString();
         recyclerView = findViewById(R.id.recycler_view_repos);
 
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
@@ -56,6 +53,7 @@ public class ResultsActivity extends AppCompatActivity {
         Retrofit retrofit = builder.build();
 
         GithubClient client = retrofit.create(GithubClient.class);
+
         Call<JSONResponse> call = client.getRepos(query);
 
         call.enqueue(new Callback<JSONResponse>() {
