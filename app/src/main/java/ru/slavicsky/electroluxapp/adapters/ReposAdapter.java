@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 import java.util.List;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import ru.slavicsky.electroluxapp.R;
 import ru.slavicsky.electroluxapp.data.GithubRepo;
 
@@ -37,7 +39,6 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
     @Override
     public void onBindViewHolder(ViewHolder holder, int position) {
         GithubRepo repo = repos.get(position);
-        System.out.println(repos.size());
         holder.stars.setText("stars: " + repo.stars);
         holder.url.setText(repo.url);
         holder.repoName.setText(repo.repoName);
@@ -45,17 +46,14 @@ public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> 
     }
 
     class ViewHolder extends RecyclerView.ViewHolder {
-        TextView url;
-        TextView repoName;
-        TextView stars;
-        TextView size;
+        @BindView(R.id.size) TextView size;
+        @BindView(R.id.repo_name) TextView repoName;
+        @BindView(R.id.stars) TextView stars;
+        @BindView(R.id.url) TextView url;
 
         public ViewHolder(View itemView) {
             super(itemView);
-            size = itemView.findViewById(R.id.size);
-            url = itemView.findViewById(R.id.url);
-            stars = itemView.findViewById(R.id.stars);
-            repoName = itemView.findViewById(R.id.repo_name);
+            ButterKnife.bind(this, itemView);
         }
     }
 

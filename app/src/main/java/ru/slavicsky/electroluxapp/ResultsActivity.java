@@ -9,8 +9,9 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.Objects;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Call;
@@ -25,7 +26,7 @@ import ru.slavicsky.electroluxapp.services.GithubClient;
 
 public class ResultsActivity extends AppCompatActivity {
 
-    RecyclerView recyclerView;
+    @BindView(R.id.recycler_view_repos) RecyclerView recyclerView;
     public ArrayList<GithubRepo> repos;
 
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,7 +37,7 @@ public class ResultsActivity extends AppCompatActivity {
         Bundle arguments = getIntent().getExtras();
         String query = arguments.get("query").toString();
 
-        recyclerView = findViewById(R.id.recycler_view_repos);
+        ButterKnife.bind(this);
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
         recyclerView.setLayoutManager(layoutManager);
 
