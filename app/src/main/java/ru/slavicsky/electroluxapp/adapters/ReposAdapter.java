@@ -17,7 +17,7 @@ import ru.slavicsky.electroluxapp.data.GithubRepo;
 
 public class ReposAdapter extends RecyclerView.Adapter<ReposAdapter.ViewHolder> {
 
-    public List<GithubRepo> repos;
+    private List<GithubRepo> repos;
 
     public ReposAdapter(List<GithubRepo> repos) {
         this.repos = repos;

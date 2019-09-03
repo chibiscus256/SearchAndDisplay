@@ -1,4 +1,4 @@
-package ru.slavicsky.electroluxapp;
+package ru.slavicsky.electroluxapp.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -12,6 +12,8 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 import butterknife.OnTextChanged;
+import ru.slavicsky.electroluxapp.AppConstants;
+import ru.slavicsky.electroluxapp.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
 
     @OnClick(R.id.results_button) void search(){
         Intent intent = new Intent(MainActivity.this, ResultsActivity.class);
-        intent.putExtra("query", search.getText());
+        intent.putExtra(AppConstants.query, search.getText());
         startActivity(intent);
     }
 

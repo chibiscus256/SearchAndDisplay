@@ -21,14 +21,14 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="10dp"
-            android:textSize="18sp"
-            android:textStyle="bold"/>
+            android:textSize="@dimen/text_size_large"
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/url"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="owner" />
+            android:text="@string/url_placeholder" />
 
         <TextView
             android:id="@+id/stars"
@@ -39,7 +39,7 @@
             android:id="@+id/size"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="not specified" />
+            android:text="@string/size_placeholder" />
 
     </LinearLayout>
 </androidx.cardview.widget.CardView>

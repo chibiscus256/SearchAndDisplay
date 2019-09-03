@@ -3,4 +3,6 @@
     <string name="greetings">Thanks for using this searching app! Enter a query to find GitHub repositories whose name or description respectively</string>
     <string name="search">Search…</string>
     <string name="button_text">GET RESULTS</string>
+    <string name="url_placeholder">unable to get url</string>
+    <string name="size_placeholder">unable to get size</string>
 </resources>
